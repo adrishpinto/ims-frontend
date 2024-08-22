@@ -21,10 +21,12 @@ function Register() {
   const [clicked, setClicked] = useState(false);
   const [showEye, setShowEye] = useState(0);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/register", {
+      await axios.post(`${apiUrl}/register`, {
         firstname,
         lastname,
         email,
@@ -32,7 +34,7 @@ function Register() {
         mobile,
         address,
       });
-      alert("You Have Succefully Created an Account Please Login");
+      alert("You Have Successfully Created an Account. Please Login.");
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -46,7 +48,9 @@ function Register() {
   return (
     <div className="bg-gradient-to-r white min-h-screen flex w-full from-emerald-500 to-cyan-400 border border-black items-center">
       <div className="w-[50%] scale-75">
-        <h1 className="text-7xl {cyan}-600 font-bold text-center">Welcome !</h1>
+        <h1 className="text-7xl {cyan}-600 xl:font-bold text-center 2xl:font-thin">
+          Welcome !
+        </h1>
         <div className="text-3xl mt-5 font-bold text-center ">
           If you already have an Account then login
         </div>

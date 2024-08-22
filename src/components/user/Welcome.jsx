@@ -13,10 +13,13 @@ function Welcome() {
     getUser();
   }, []);
 
-  const getUser = async () => {
-    const res = await axios.get(`http://localhost:5000/login/${id}`);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const getUser = async (id) => {
+    const res = await axios.get(`${apiUrl}/login/${id}`);
     setUser(res.data[0].firstname);
   };
+
   const oc = () => {
     navigate("home");
   };

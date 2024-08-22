@@ -32,13 +32,15 @@ function Track() {
   useEffect(() => {
     getProducts();
   }, [order_id]);
-  const getUser = async () => {
-    const res = await axios.get(`http://localhost:5000/login/${id}`);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const getUser = async (id) => {
+    const res = await axios.get(`${apiUrl}/login/${id}`);
     setOrderID(`${res.data[0].password}`);
   };
 
-  const getProducts = async () => {
-    const res = await axios.get(`http://localhost:5000/ordersPost/${order_id}`);
+  const getProducts = async (order_id) => {
+    const res = await axios.get(`${apiUrl}/ordersPost/${order_id}`);
     setOrders(res.data);
   };
   return (

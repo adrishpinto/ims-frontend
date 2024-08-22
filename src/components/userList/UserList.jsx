@@ -10,8 +10,10 @@ function UserList(props) {
     getUsers();
   }, []);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const getUsers = async () => {
-    const res = await axios.get("http://localhost:5000/login");
+    const res = await axios.get(`${apiUrl}/login`);
     setUsers(res.data);
   };
 

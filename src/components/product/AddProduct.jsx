@@ -16,8 +16,10 @@ const EditProduct = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const getOneProduct = async () => {
-    const response = await axios.get(`http://localhost:5000/products/${id}`);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const getOneProduct = async (id) => {
+    const response = await axios.get(`${apiUrl}/products/${id}`);
     setName(response.data.productname);
     setPrice(response.data.category);
     setCategory(response.data.price);
@@ -28,11 +30,11 @@ const EditProduct = () => {
     setProduct_id(response.data.product_Id);
     setQuantity(response.data.quantity);
   };
-  const BASE_URL = "http://localhost:5000";
+
   const addProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${BASE_URL}/products`, {
+      await axios.post(`${apiUrl}/products`, {
         productname,
         price,
         category,

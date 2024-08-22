@@ -13,19 +13,21 @@ import { FaAsterisk } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
 
 function Home() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  console.log(apiUrl);
   const [products, setProducts] = useState([]);
-  const [ext, setExt] = useState([]);
+
   useEffect(() => {
     getProducts();
   }, []);
 
   const getProducts = async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`${apiUrl}/products`);
     setProducts(res.data);
   };
 
   const getCategory = async (id) => {
-    const res = await axios.get(`http://localhost:5000/category/${id}`);
+    const res = await axios.get(`${apiUrl}/category/${id}`);
     setProducts(res.data);
   };
   const x = "watch";

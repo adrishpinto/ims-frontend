@@ -13,17 +13,21 @@ function Categorys() {
     getCategory();
   }, []);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const getCategory = async () => {
-    const res = await axios.get("http://localhost:5000/categories");
+    const res = await axios.get(`${apiUrl}/categories`);
     setCategorys(res.data);
   };
+
   const getCategoryID = async (id) => {
-    const res = await axios.get(`http://localhost:5000/categories/${id}`);
+    const res = await axios.get(`${apiUrl}/categories/${id}`);
     setCategorys(res.data);
   };
+
   const deleteCategory = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/categories/${id}`);
+      await axios.delete(`${apiUrl}/categories/${id}`);
       getCategory();
     } catch (error) {
       console.log(error);

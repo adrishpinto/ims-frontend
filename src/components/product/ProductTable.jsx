@@ -14,22 +14,25 @@ const ProductTable = () => {
     getProducts();
   }, []);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const getProducts = async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`${apiUrl}/products`);
     setProduct(res.data);
   };
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${id}`);
+      await axios.delete(`${apiUrl}/products/${id}`);
       getProducts();
     } catch (error) {
       console.log(error);
     }
   };
+
   const findCategory = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:5000/category/${id}`);
+      const res = await axios.get(`${apiUrl}/category/${id}`);
       setProduct(res.data);
     } catch (error) {
       console.log(error);

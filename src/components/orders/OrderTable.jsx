@@ -11,18 +11,21 @@ function Orders() {
     getOrders();
   }, []);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const getOrders = async () => {
-    const res = await axios.get("http://localhost:5000/ordersPost");
+    const res = await axios.get(`${apiUrl}/ordersPost`);
     setOrders(res.data);
   };
+
   const getOrderID = async (id) => {
-    const res = await axios.get(`http://localhost:5000/ordersPost/${id}`);
+    const res = await axios.get(`${apiUrl}/ordersPost/${id}`);
     setOrders(res.data);
   };
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/ordersPost/${id}`);
+      await axios.delete(`${apiUrl}/ordersPost/${id}`);
       getOrders();
     } catch (error) {
       console.log(error);

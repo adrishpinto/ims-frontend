@@ -249,6 +249,7 @@ function Home(props) {
                             setQuantity(e.target.value);
                           }}
                           type="text"
+                          value={quantity}
                           className="text-2xl font-light w-10 border-y border-black focus:outline-none text-center placeholder:text-gray-900"
                           placeholder="1"
                         />

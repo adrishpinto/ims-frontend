@@ -19,10 +19,11 @@ function Register() {
   useEffect(() => {
     getUsers();
   }, []);
-  const BASE_URL = "http://localhost:5000";
 
-  const getUsers = async (arr) => {
-    const res = await axios.get(`${BASE_URL}/login`);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const getUsers = async () => {
+    const res = await axios.get(`${apiUrl}/login`);
     setUsers(res.data);
   };
 
@@ -50,22 +51,36 @@ function Register() {
 
   return (
     <div className="bg-gradient-to-r white min-h-screen h-full flex items-center w-full from-emerald-500 to-cyan-400 border border-black ">
-      <div className="w-[50%]">
-        <h1 className="text-7xl {cyan}-600 xl:font-bold text-center 2xl:font-thin">
-          Welcome !
-        </h1>
-        <div className="text-3xl mt-5 font-bold text-center ">
-          If you Don't have an Account then Register!
+      <div className="w-[50%] scale-75 ">
+        <div className=" ">
+          <h1 className="text-7xl {cyan}-600 xl:font-bold text-center 2xl:font-thin">
+            Welcome !
+          </h1>
+          <div className="text-3xl mt-5 font-bold text-center ">
+            If you Don't have an Account then Register!
+          </div>
+          <Link to={"/register"}>
+            <button
+              type="submit"
+              className="text-white rounded-xl font-poppins tracking-widest bg-black text-2xl h-14 outline-none mt-12 ml-[50%] translate-x-[-50%] w-52"
+            >
+              Register
+            </button>
+          </Link>
         </div>
-        <Link to={"/register"}>
-          <button
-            type="submit"
-            className="text-white rounded-xl font-poppins tracking-widest bg-black text-2xl h-14 outline-none mt-12 ml-[50%] translate-x-[-50%] w-52"
-          >
-            Register
-          </button>
-        </Link>
+        <div className="absolute left-[50%] translate-x-[-50%] w-[90%]">
+          <div className=" text-2xl border border-black w-full mt-20 ">
+            1. User Login - username = "user", password = "user"
+          </div>
+          <div className=" text-2xl border border-black w-full mt-1">
+            2. Admin Login - username = "admin" and password = "1234"
+          </div>
+          <div className=" text-2xl border border-black w-full mt-1">
+            3. if you register use firstname with your password
+          </div>
+        </div>
       </div>
+
       <div className="w-[40%]  justify-center scale-75">
         <h1 className="text-6xl text-center mt-0 font-bold">Sign-in</h1>
         <div className="">
@@ -77,7 +92,7 @@ function Register() {
             <input
               type="text"
               className={inputStyle}
-              placeholder="First Name"
+              placeholder="username"
               value={firstname}
               onChange={(e) => setfName(e.target.value)}
               onFocus={() => setShowEye(0)}
