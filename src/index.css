@@ -61,16 +61,17 @@ text[input] {
   animation-duration: 2s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  position: absolute;
-  left: -500px;
+  align-items: center;
 }
 @keyframes example {
   0% {
-    left: -400px;
+    visibility: visible;
+    left: -500px;
   }
 
   100% {
-    left: 585px;
+    visibility: visible;
+    left: 50%;
   }
 }
 

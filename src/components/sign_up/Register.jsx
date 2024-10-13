@@ -1,27 +1,31 @@
-import React, { useState } from "react";
-import icon from "../../assets/icon.png";
-import { MdEmail } from "react-icons/md";
-import { FaLock, FaUser, FaPhoneAlt } from "react-icons/fa";
-import { IoLocationSharp } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { IoEyeSharp } from "react-icons/io5";
-import { IoMdEyeOff } from "react-icons/io";
+import { useNavigate, Link } from "react-router-dom";
 
-function Register() {
+function Register1() {
+  const [users, setUsers] = useState([]);
   const [firstname, setfName] = useState("");
   const [lastname, setlName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const [clicked, setClicked] = useState(false);
-  const [showEye, setShowEye] = useState(0);
-
   const apiUrl = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/login`);
+      setUsers(res.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
 
   const saveUser = async (e) => {
     e.preventDefault();
@@ -41,142 +45,122 @@ function Register() {
     }
   };
 
-  const inputStyle = "w-full text-xl h-full outline-none bg-slate-50";
-  const ContainerStyle =
-    "flex focus:outline-none focus:bg-slate-200 ml-[50%] translate-x-[-50%] border rounded-lg border-white  bg-slate-50 w-3/5 text-[25px] h-14 justify-center mt-6";
-  const iconStyle = "my-auto mx-3";
   return (
-    <div className="bg-gradient-to-r white min-h-screen flex w-full from-emerald-500 to-cyan-400 border border-black items-center">
-      <div className="w-[50%] scale-75">
-        <h1 className="text-7xl {cyan}-600 xl:font-bold text-center 2xl:font-thin">
-          Welcome !
-        </h1>
-        <div className="text-3xl mt-5 font-bold text-center ">
-          If you already have an Account then login
+    <div>
+      <div className="bg-gradient-to-l from-blue-500 to-purple-500  min-h-screen flex flex-col ">
+        <div>
+          <h1 className="text-4xl font-light text-center mt-5">Register</h1>
         </div>
-        <Link to={"/login"}>
-          <button className="text-white rounded-xl font-poppins tracking-widest bg-black text-2xl h-14 outline-none mt-12 ml-[50%] translate-x-[-50%] w-52">
-            LOGIN
-          </button>
-        </Link>
-      </div>
-      <div className="w-[40%]">
-        <h1 className="text-5xl text-center mt-0 font-bold">Register</h1>
-        <div className="">
-          <form onSubmit={saveUser}>
-            <div className={ContainerStyle}>
-              <i className={iconStyle}>
-                <FaUser />
-              </i>
+        <form
+          onSubmit={saveUser}
+          className="bg-white sm:w-2/5 w-4/5 mx-auto mt-5 mb-10 rounded-xl border border-slate-500 shadow-2xl py-10 pb-14"
+        >
+          <h1 className="text-3xl text-gray-600 text-center">
+            Create an Account
+          </h1>
+          {errorMessage && (
+            <div className="text-red-500 text-center">{errorMessage}</div>
+          )}
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">
+              First Name
+            </div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
                 type="text"
-                className={inputStyle}
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="First Name"
                 value={firstname}
                 onChange={(e) => setfName(e.target.value)}
-                onFocus={() => setShowEye(0)}
+                required
               />
             </div>
-            <div className={ContainerStyle}>
-              <i className={iconStyle}>
-                <FaUser />
-              </i>
+          </div>
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">Last Name</div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
                 type="text"
-                className={inputStyle}
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="Last Name"
                 value={lastname}
                 onChange={(e) => setlName(e.target.value)}
-                onFocus={() => setShowEye(0)}
+                required
               />
             </div>
-            <div className={ContainerStyle}>
-              <i className={iconStyle}>
-                <MdEmail />
-              </i>
+          </div>
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">Email</div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
-                type="text"
-                className={inputStyle}
+                type="email"
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setShowEye(0)}
+                required
               />
             </div>
-            <div className={ContainerStyle}>
-              <i className={iconStyle}>
-                <FaLock />
-              </i>
+          </div>
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">Password</div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
-                type={showEye == 2 ? "text" : "password"}
-                className={inputStyle}
+                type="password"
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => {
-                  if (!clicked || showEye == "0") {
-                    setClicked(true);
-                    setShowEye(1);
-                  }
-                }}
+                required
               />
-              <i
-                className={
-                  showEye == "2" ? "my-3.5 mx-3 hover:cursor-pointer" : "hidden"
-                }
-                onClick={() => setShowEye(1)}
-              >
-                <IoEyeSharp />
-              </i>
-              <i
-                className={
-                  showEye == "1" ? "my-3.5 mx-3 hover:cursor-pointer" : "hidden"
-                }
-                onClick={() => setShowEye(2)}
-              >
-                <IoMdEyeOff />
-              </i>
             </div>
-
-            <div className={ContainerStyle}>
-              <i className={iconStyle}>
-                <FaPhoneAlt />
-              </i>
+          </div>
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">
+              Mobile Number
+            </div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
-                type="text"
-                className={inputStyle}
+                type="tel"
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="Mobile Number"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                onFocus={() => setShowEye(0)}
+                required
               />
             </div>
-
-            <div className={ContainerStyle}>
-              <i className="my-auto mx-3">
-                <IoLocationSharp />
-              </i>
+          </div>
+          <div className="mt-10 w-2/3 mx-auto">
+            <div className="text-gray-700 font-semibold text-sm">Address</div>
+            <div className="border-b-2 border-transparent bg-gradient-to-r to-gray-500 from-gray-500 focus-within:from-purple-400 focus-within:to-blue-500">
               <input
                 type="text"
-                className={inputStyle}
+                className="shadow-2xl h-10 w-full bg-white focus:outline-none pl-4"
                 placeholder="Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                onFocus={() => setShowEye(0)}
+                required
               />
             </div>
-
-            <button
-              type="submit"
-              className="text-white rounded-xl pb-1 font-poppins tracking-widest bg-black text-xl font-light h-12 outline-none mt-4 ml-[50%] translate-x-[-50%] w-40"
+            <Link to={"/login"}>
+              {" "}
+              <span className="text-[12px] text-gray-400 pl-2 underline my-3 block hover:cursor-pointer">
+                Already have an account? Click here
+              </span>
+            </Link>
+          </div>
+          <div className="mt-2 w-2/3 mx-auto">
+            <div
+              className="bg-gradient-to-l from-blue-500 to-purple-500 text-slate-50 text-center py-2 rounded-md text-md hover:cursor-pointer"
+              onClick={saveUser}
             >
               Register
-            </button>
-          </form>
-        </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );
 }
 
-export default Register;
+export default Register1;

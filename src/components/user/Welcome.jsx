@@ -10,7 +10,7 @@ function Welcome() {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    getUser();
+    getUser(id);
   }, []);
 
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -25,13 +25,13 @@ function Welcome() {
   };
   return (
     <div>
-      <div className="w-full h-screen bg-gradient-to-r from-cyan-500 to-emerald-500 ani2">
-        <h1 className="text-center  text-5xl pt-[17%] ani1 absolute left[-200px]">
-          Welcome <span className="font-medium">{user}</span>!
+      <div className="w-full h-screen flex flex-col space-y-4 bg-gradient-to-r from-cyan-500 to-emerald-500 ani2">
+        <h1 className="text-center text-5xl pt-[17%] ani1 flex relative  w-fit invisible translate-x-[-50%]">
+          Welcome {user}
         </h1>
         <h1
           onClick={oc}
-          className="text-center text-4xl font-light border-black border-y hover:bg-gray-100 hover:cursor-pointer h-12 hover:bg-opacity-15 w-96 mx-auto mt-[21%] ani3"
+          className="text-center text-4xl font-light border-black border-y hover:bg-gray-100 hover:cursor-pointer h-12 hover:bg-opacity-15 w-96 mx-auto ani3 "
         >
           Start Placing Orders
         </h1>
