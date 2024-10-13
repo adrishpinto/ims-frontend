@@ -22,13 +22,13 @@ import { useParams } from "react-router-dom";
 function Home(props) {
   const { id } = useParams();
   const [order_id, setOrderID] = useState("");
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
     getUser();
   }, []);
 
   const getUser = async () => {
-    const res = await axios.get(`http://localhost:5000/login/${id}`);
+    const res = await axios.get(`${apiUrl}/login/${id}`);
     setOrderID(`${res.data[0].password}`);
   };
   const [productname, setName] = useState("");
@@ -41,7 +41,7 @@ function Home(props) {
   const [products, setProducts] = useState([]);
   const [x, setX] = useState(0);
   const getProducts = async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`${apiUrl}/products`);
     setProducts(res.data);
   };
 
