@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(true);
-    }, 2000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -182,8 +182,8 @@ function Home() {
                 </div>
               );
             })}
-            {products.length == 0 && (
-              <div className="text-center text-xl font-semibold mt-10">
+            {products.length == 0 && showMessage && (
+              <div className="text-center text-4xl font-thin mt-10">
                 If Products do not Load please wait for 30-60 seconds as the
                 backend server has to load.
               </div>
