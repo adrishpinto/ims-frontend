@@ -79,7 +79,7 @@ function Checkout() {
     order_id
   ) => {
     try {
-      await axios.post(`http://localhost:5000/ordersPost`, {
+      await axios.post(`${apiUrl}/ordersPost`, {
         productname,
         price,
         description,

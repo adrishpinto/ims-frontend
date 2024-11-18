@@ -63,10 +63,12 @@ function Track() {
             onClick={() => navigate(-1)}
             className="text-white dark:hover:opacity-70 border border-black px-3 py-1 w-40 bg-black bg-opacity-30 absolute right-[90px] text-xl hover:cursor-pointer hover:hover:text-blue-500 flex items-center top-20"
           >
-            <i className="dark:text-white pr-2">
-              <SlHome size={20} />
-            </i>
-            <span className="ml-2">Home</span>
+            <div className="w-20  flex mt-10">
+              <i className="dark:text-white ">
+                <SlHome size={25} />
+              </i>
+              <span className="ml-2">Home</span>
+            </div>
           </div>
         </div>
 

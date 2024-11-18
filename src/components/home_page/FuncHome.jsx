@@ -97,9 +97,9 @@ function Home(props) {
         <div className="relative h-[45vh]">
           <h1
             onClick={oc}
-            className="text-6xl absolute top-[-10%] font-semibold left-[50%] mt-40 border-b-4 border-white translate-x-[-50%] text-white"
+            className="text-7xl absolute top-[-10%] font-semibold left-[50%] mt-40  border-white translate-x-[-50%] text-white"
           >
-            Best Place For Shopping!
+            <span className="hollow">Best Place To Shop!</span>
           </h1>
           <img
             src={banner}
@@ -123,9 +123,9 @@ function Home(props) {
             </div>
           </Link>
           <Link to="track">
-            <div className="text-white dark:hover:opacity-70 border border-black px-3 py-1 w-36 bg-gray-900 bg-opacity-30 absolute right-16 text-xl hover:cursor-pointer hover:bg-opacity-50 flex items-center top-56">
+            <div className="text-white dark:hover:opacity-70 border border-black px-3 py-2 w-36 bg-gray-900 bg-opacity-30 absolute right-16 text-xl hover:cursor-pointer hover:bg-opacity-50 flex items-center top-56">
               <i className="dark:text-white">
-                <CiBoxList size={40} />
+                <CiBoxList size={30} />
               </i>
               <span>Orders</span>
             </div>
@@ -142,7 +142,7 @@ function Home(props) {
               <ol className="text-2xl mt-3 text-slate-200 space-y-10 font-thin [&_li]:pl-5">
                 <div
                   onClick={() => getCategory("laptop")}
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <FaLaptop size={25} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -152,7 +152,7 @@ function Home(props) {
                 </div>
                 <div
                   onClick={() => getCategory("watch")}
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <MdWatch size={25} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -162,7 +162,7 @@ function Home(props) {
                 </div>
                 <div
                   onClick={() => getCategory("phone")}
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <MdOutlinePhoneAndroid size={25} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -172,7 +172,7 @@ function Home(props) {
                 </div>
                 <div
                   onClick={() => getCategory("headphone")}
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <PiHeadphonesFill size={25} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -187,7 +187,7 @@ function Home(props) {
                       setProducts
                     )
                   }
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <FaMouse size={25} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -197,7 +197,7 @@ function Home(props) {
                 </div>
                 <div
                   onClick={() => getProducts()}
-                  className="flex items-baseline "
+                  className="flex items-center "
                 >
                   <FaAsterisk size={20} />
                   <li className="hover:cursor-pointer hover:text-slate-400">
@@ -211,22 +211,22 @@ function Home(props) {
 
           {/* product map start*/}
 
-          <div className=" w-[82%] pt-5 flex  flex-wrap ml-20">
+          <div className=" w-[83%] pt-5 flex  flex-wrap ml-20">
             {products.map((item) => {
               return (
-                <div className="h-[450px] border border-slate-400 w-80 bg-slate-200 relative m-5  ">
+                <div className="h-[450px] border border-slate-400 w-80 bg-slate-200 relative m-5 mx-7 ">
                   <img
                     src={`${item.image}`}
                     className="bg-slate-200 h-[250px] pt-2 mx-auto mb-10"
                   ></img>
                   <div className="py-2 px-3">
-                    <div className="flex items-baseline">
+                    <div className="flex items-center">
                       <p className="text-2xl font-light mr-3">
                         {item.productname}
                       </p>
 
                       <div className="absolute right-2">
-                        <div className="flex items-baseline">
+                        <div className="flex items-center">
                           <FaStar color="orange" size={20} />
                           <p className="text-2xl ">{item.rating}</p>
                         </div>
@@ -243,7 +243,7 @@ function Home(props) {
                       >
                         Add To Cart
                       </button>
-                      <div className="flex items-baseline">
+                      <div className="flex items-center">
                         <input
                           onChange={(e) => {
                             setQuantity(e.target.value);
