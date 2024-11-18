@@ -118,5 +118,6 @@ text[input] {
   }
   100% {
     opacity: 1;
+    cursor: pointer;
   }
 }

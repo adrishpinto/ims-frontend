@@ -31,7 +31,7 @@ function Welcome() {
         </h1>
         <h1
           onClick={oc}
-          className="text-center text-4xl font-light border-black border-y hover:bg-gray-100 hover:cursor-pointer h-12 hover:bg-opacity-15 w-96 mx-auto ani3 "
+          className="text-center text-4xl font-light border-black border-y hover:bg-gray-100 hover:cursor-default h-12 hover:bg-opacity-15 w-96 mx-auto ani3 "
         >
           Start Placing Orders
         </h1>

@@ -40,7 +40,7 @@ function Track() {
   };
 
   const getProducts = async (order_id) => {
-    const res = await axios.get(`${apiUrl}/ordersPost/${order_id}`);
+    const res = await axios.get(`${apiUrl}/ordersPost/${id}`);
     setOrders(res.data);
   };
   return (
@@ -50,6 +50,7 @@ function Track() {
           <h1 className="text-8xl text-white font-thin text-center pt-[5%] ">
             Orders.
           </h1>
+
           <Link to="/">
             <div className="text-white dark:hover:opacity-70 border border-black px-3 py-1 w-40 bg-black bg-opacity-30 absolute right-[90px] text-xl hover:cursor-pointer hover:text-blue-500 flex items-center top-10">
               <i className="dark:text-white pr-2">
@@ -73,6 +74,7 @@ function Track() {
         </div>
 
         <div className="flex  w-full h-full">
+          <div className="text-5xl text-center"></div>
           <div className=" w-[1/2] px-20 pb-20 flex  flex-wrap">
             {orders.map((items) => {
               return (

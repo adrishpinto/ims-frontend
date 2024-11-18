@@ -39,6 +39,7 @@ function Orders() {
         <h1 className="text-center text-6xl font-sans font-semibold pt-16 dark:text-gray-300">
           Orders{" "}
         </h1>
+
         <div class="relative overflow-x-auto shadow-2xl dark:shadow-none border-gray-100 w-4/5 mx-auto mt-14 mb-14">
           <table class="w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400  bg-cyan-500 [&_th]:w-96">

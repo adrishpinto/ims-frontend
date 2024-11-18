@@ -3,6 +3,7 @@ import banner from "../../assets/banner1.jpeg";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { MdWatch } from "react-icons/md";
 import { PiHeadphonesFill } from "react-icons/pi";
+import Sidebar from "./Sidebar";
 import {
   FaStar,
   FaAsterisk,
@@ -95,11 +96,8 @@ function Home(props) {
     <div>
       <div className=" w-full h-full">
         <div className="relative h-[45vh]">
-          <h1
-            onClick={oc}
-            className="text-7xl absolute top-[-10%] font-semibold left-[50%] mt-40  border-white translate-x-[-50%] text-white"
-          >
-            <span className="hollow">Best Place To Shop!</span>
+          <h1 className="invisible sm:visible text-7xl absolute top-[-10%] font-semibold left-[50%] mt-40  border-white translate-x-[-50%] text-white">
+            Electronic <span className="hollow">Mart</span>
           </h1>
           <img
             src={banner}
@@ -134,84 +132,13 @@ function Home(props) {
 
         <div className="flex  w-full h-full">
           {/* side bar */}
-          <div className="w-[18%] bg-gray-900 min-h-full ">
-            <div className=" mx-auto mt-12 w-64 rounded-[10px] ml-9">
-              <h2 className="text-3xl border-b-2 w-36 border-slate-50 text-slate-100 mb-10 ml-6">
-                Categories
-              </h2>
-              <ol className="text-2xl mt-3 text-slate-200 space-y-10 font-thin [&_li]:pl-5">
-                <div
-                  onClick={() => getCategory("laptop")}
-                  className="flex items-center "
-                >
-                  <FaLaptop size={25} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    {" "}
-                    Laptop
-                  </li>
-                </div>
-                <div
-                  onClick={() => getCategory("watch")}
-                  className="flex items-center "
-                >
-                  <MdWatch size={25} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    {" "}
-                    Watch
-                  </li>
-                </div>
-                <div
-                  onClick={() => getCategory("phone")}
-                  className="flex items-center "
-                >
-                  <MdOutlinePhoneAndroid size={25} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    {" "}
-                    Phone
-                  </li>
-                </div>
-                <div
-                  onClick={() => getCategory("headphone")}
-                  className="flex items-center "
-                >
-                  <PiHeadphonesFill size={25} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    {" "}
-                    Headphones
-                  </li>
-                </div>
-                <div
-                  onClick={() =>
-                    props.getData(
-                      `http://localhost:5000/category/mouse`,
-                      setProducts
-                    )
-                  }
-                  className="flex items-center "
-                >
-                  <FaMouse size={25} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    {" "}
-                    Mouse
-                  </li>
-                </div>
-                <div
-                  onClick={() => getProducts()}
-                  className="flex items-center "
-                >
-                  <FaAsterisk size={20} />
-                  <li className="hover:cursor-pointer hover:text-slate-400">
-                    Show All
-                  </li>
-                </div>
-              </ol>
-            </div>
-          </div>
+
+          <Sidebar />
           {/* side bar end */}
 
           {/* product map start*/}
 
-          <div className=" w-[83%] pt-5 flex  flex-wrap ml-20">
+          <div className=" sm:w-[83%] w-[90%] mx-auto pt-5 flex items-center  justify-center flex-wrap  ">
             {products.map((item) => {
               return (
                 <div className="h-[450px] border border-slate-400 w-80 bg-slate-200 relative m-5 mx-7 ">
