@@ -141,10 +141,10 @@ function Home(props) {
           <div className=" sm:w-[83%] w-[90%] mx-auto pt-5 flex items-center  justify-center flex-wrap  ">
             {products.map((item) => {
               return (
-                <div className="h-[450px] border border-slate-400 w-80 bg-slate-200 relative m-5 mx-7 ">
+                <div className="h-fit py-3 border border-slate-400 w-80 bg-slate-200 relative m-5 mx-7 ">
                   <img
                     src={`${item.image}`}
-                    className="bg-slate-200 h-[250px] pt-2 mx-auto mb-10"
+                    className="bg-slate-200 h-[250px] pt-0 mx-auto mb-1"
                   ></img>
                   <div className="py-2 px-3">
                     <div className="flex items-center">
