@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import banner from "../../assets/banner1.jpeg";
-import { FaLaptop } from "react-icons/fa";
-import { MdOutlinePhoneAndroid } from "react-icons/md";
-import { MdWatch } from "react-icons/md";
-import { PiHeadphonesFill } from "react-icons/pi";
-import { FaMouse } from "react-icons/fa";
-import phone from "../../assets/phone.avif";
+
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaAsterisk } from "react-icons/fa";
+
 import { IoIosLogIn } from "react-icons/io";
 import Sidebar from "./Sidebar";
-import Login from "../sign_up/Login";
 
 function Home() {
   const [showMessage, setShowMessage] = useState(false);
@@ -70,6 +64,12 @@ function Home() {
           {/* side bar */}
 
           <div className=" sm:w-[83%] w-[90%] mx-auto pt-5 flex items-center  justify-center flex-wrap  ">
+            {products.length == 0 && (
+              <div className="text-5xl text-center self-start w-full font-thin">
+                Server is hosted using free services. Please wait 30-60 seconds
+                for the data to load. 
+              </div>
+            )}
             {products.map((item) => {
               return (
                 <div className="h-fit border border-slate-400 w-80 bg-slate-200 relative m-5 py-3 mx-7 ">

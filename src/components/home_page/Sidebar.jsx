@@ -4,9 +4,8 @@ import { MdOutlinePhoneAndroid, MdWatch } from "react-icons/md";
 import { PiHeadphonesFill } from "react-icons/pi";
 
 const Sidebar = ({ getCategory, getProducts }) => {
-  const [isOpen, setIsOpen] = useState(false); // State for toggling sidebar visibility
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Function to toggle sidebar
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
