@@ -109,13 +109,13 @@ function Checkout() {
   };
 
   const getOrders = async () => {
-    const res = await axios.get(`http://localhost:5000/orders/${order_id}`);
+    const res = await axios.get(`${apiUrl}/orders/${order_id}`);
     setOrders(res.data);
   };
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/orders/${id}`);
+      await axios.delete(`${apiUrl}/orders/${id}`);
       getOrders();
     } catch (error) {
       console.log(error);

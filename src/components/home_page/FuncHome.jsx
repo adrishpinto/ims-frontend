@@ -59,13 +59,13 @@ function Home(props) {
   };
 
   const getCategory = async (id) => {
-    const res = await axios.get(`http://localhost:5000/category/${id}`);
+    const res = await axios.get(`${apiUrl}/category/${id}`);
     setProducts(res.data);
   };
 
   const getOneProduct = async (id) => {
     // function is for add to cart
-    const response = await axios.get(`http://localhost:5000/products/${id}`);
+    const response = await axios.get(`${apiUrl}/products/${id}`);
     setName(response.data.productname);
     setDescription(response.data.description);
     setPrice(response.data.price);
@@ -77,7 +77,7 @@ function Home(props) {
 
   const postOrder = async () => {
     try {
-      await axios.post(`http://localhost:5000/orders`, {
+      await axios.post(`${apiUrl}/orders`, {
         productname,
         description,
         price,
